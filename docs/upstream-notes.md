@@ -49,8 +49,8 @@ Potential module namespace later:
 ## Next Steps
 
 1. Identify upstream build entrypoints used outside Docker.
-2. Determine whether packaging should start from source build or from ISC’s own
-   package artifacts.
+2. Refine the chosen source-build-first strategy into concrete derivations and
+   only use ISC package artifacts as a fallback/reference path.
 3. Split packaging work into:
    - source/build derivations
    - runtime module

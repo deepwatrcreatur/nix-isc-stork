@@ -48,6 +48,8 @@ names such as `isc-stork-server` and `isc-stork-agent`.
 - [flake.nix](./flake.nix): dev shell and future package/module entrypoint
 - [docs/upstream-notes.md](./docs/upstream-notes.md): packaging-oriented
   upstream notes
+- [docs/packaging-strategy.md](./docs/packaging-strategy.md): baseline decision
+  on source build vs ISC package artifacts
 
 ## Current Status
 
