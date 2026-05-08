@@ -12,7 +12,7 @@ This folder is the local agent queue for `nix-isc-stork`.
 ## Current Ranked Queue
 
 - [01-upstream-build-entrypoints.md](./01-upstream-build-entrypoints.md) — `done`
-- [02-source-package-scaffold.md](./02-source-package-scaffold.md) — `ready`
+- [02-source-package-scaffold.md](./02-source-package-scaffold.md) — `done`
 - [03-nixos-module-surface.md](./03-nixos-module-surface.md) — `blocked`
 
 ## Notes
