@@ -14,6 +14,9 @@ This folder is the local agent queue for `nix-isc-stork`.
 - [01-upstream-build-entrypoints.md](./01-upstream-build-entrypoints.md) — `done`
 - [02-source-package-scaffold.md](./02-source-package-scaffold.md) — `done`
 - [03-nixos-module-surface.md](./03-nixos-module-surface.md) — `blocked`
+- [04-go-backend-build.md](./04-go-backend-build.md) — `in-progress`
+- [05-ui-assets-build.md](./05-ui-assets-build.md) — `blocked`
+- [06-api-codegen-prerequisites.md](./06-api-codegen-prerequisites.md) — `ready`
 
 ## Notes
 

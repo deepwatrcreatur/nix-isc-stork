@@ -1,4 +1,5 @@
 {
+  buildGoModule,
   lib,
   fetchFromGitHub,
   stdenvNoCC,
@@ -47,6 +48,14 @@ let
         platforms = lib.platforms.unix;
       };
     };
+
+  commonGoArgs = {
+    inherit version src;
+    sourceRoot = "${src.name}/backend";
+    vendorHash = "sha256-yLC3cDORzVJw3m6kZ+L7TjMZBmWCJyV1J5G/jRegM6c=";
+    proxyVendor = true;
+    doCheck = false;
+  };
 in
 rec {
   inherit src version;
@@ -107,4 +116,49 @@ rec {
     sourcePath = "webui";
     description = "ISC Stork web UI source boundary for staged npm packaging";
   };
+
+  isc-stork-server = buildGoModule (commonGoArgs // {
+    pname = "isc-stork-server";
+    subPackages = [ "cmd/stork-server" ];
+
+    ldflags = [
+      "-s"
+      "-w"
+      "-X isc.org/stork/backend/version.Version=v${version}"
+    ];
+
+    meta = {
+      description = "ISC Stork server daemon";
+      homepage = "https://stork.readthedocs.io";
+      license = lib.licenses.asl20;
+      mainProgram = "stork-server";
+      platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    };
+  });
+
+  isc-stork-agent = buildGoModule (commonGoArgs // {
+    pname = "isc-stork-agent";
+    subPackages = [ "cmd/stork-agent" ];
+
+    ldflags = [
+      "-s"
+      "-w"
+      "-X isc.org/stork/backend/version.Version=v${version}"
+    ];
+
+    postInstall = ''
+      if [ -f "$src/etc/isc-stork-agent.service" ]; then
+        install -Dm644 "$src/etc/isc-stork-agent.service" \
+          "$out/share/systemd/examples/isc-stork-agent.service"
+      fi
+    '';
+
+    meta = {
+      description = "ISC Stork agent daemon";
+      homepage = "https://stork.readthedocs.io";
+      license = lib.licenses.asl20;
+      mainProgram = "stork-agent";
+      platforms = lib.platforms.linux ++ lib.platforms.darwin;
+    };
+  });
 }

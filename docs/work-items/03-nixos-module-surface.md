@@ -6,6 +6,7 @@
 
 - `01-upstream-build-entrypoints.md`
 - `02-source-package-scaffold.md`
+- `04-go-backend-build.md`
 
 ## Objective
 

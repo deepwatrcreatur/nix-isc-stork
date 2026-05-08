@@ -26,6 +26,8 @@
 
         packages = {
           inherit (iscStork)
+            isc-stork-agent
+            isc-stork-server
             isc-stork-source-layout
             isc-stork-server-src
             isc-stork-agent-src
