@@ -18,9 +18,24 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+
+        iscStork = pkgs.callPackage ./pkgs/isc-stork { };
       in
       {
         formatter = pkgs.nixfmt-rfc-style;
+
+        packages = {
+          inherit (iscStork)
+            isc-stork-agent
+            isc-stork-server
+            isc-stork-source-layout
+            isc-stork-server-src
+            isc-stork-agent-src
+            isc-stork-ui-src
+            ;
+
+          default = iscStork.isc-stork-source-layout;
+        };
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [

@@ -56,3 +56,13 @@ names such as `isc-stork-server` and `isc-stork-agent`.
 This repo is intentionally starting as a **packaging workspace** rather than a
 pretend-finished package. The first goal is to keep evaluation and tooling
 clean while the real derivations are built incrementally.
+
+The current stage-0 package attrs are:
+
+- `isc-stork-source-layout`
+- `isc-stork-server-src`
+- `isc-stork-agent-src`
+- `isc-stork-ui-src`
+
+They pin the upstream `v2.4.0` source and preserve the server/agent/UI
+boundaries so later work can replace them with real build derivations.
